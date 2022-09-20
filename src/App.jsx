@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import './App.css';
 import AddNewContact from './components/AddNewContact'
-import './index.css';
+
 import { v4 as uuidv4 } from 'uuid';
 import Contacts from './components/Contacts';
 
@@ -59,6 +59,13 @@ function App() {
     setContacts([newContactObj, ...contacts])
     setShowSearchBar(true)
   }
+
+  const handleRemoveContact = (id) => {
+    let filteredContacts = contacts.filter(contact =>{
+      return id !== contact.id
+    })
+    setContacts(filteredContacts)
+  }
   
   return (
     <>
@@ -90,7 +97,7 @@ function App() {
 
 <br />
 <br />
-<Contacts contactsPropsArray={contacts} />
+<Contacts contactsPropsArray={contacts} deleteContact={id=> handleRemoveContact(id)} />
     
      
      

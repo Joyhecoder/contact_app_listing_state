@@ -113,3 +113,14 @@ code {
   flex-direction: column;
   justify-content: flex-start;
 }
+
+.threeButtons{
+  color: orange;
+  background-color: blanchedalmond;
+  border: none;
+  margin-top: .5rem;
+  margin-left: 2.5rem;
+  width: 75px;
+  height: 45px;
+  border-radius: 5%;
+}

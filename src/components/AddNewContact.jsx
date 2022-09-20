@@ -85,10 +85,10 @@ const handleSubmit = (e) => {
                 </Form.Group>
 
                 <div className="buttonPair">
-                    <Button variant="primary" type="submit" className="submitButton" onClick={handleSubmit} >
+                    <Button  type="submit" className="submitButton" onClick={handleSubmit} >
                         Submit
                     </Button>
-                    <Button type="submit" className="cancelButton">
+                    <Button  type="submit" className="cancelButton">
                         Cancel
                     </Button>
                 </div>

@@ -1,15 +1,16 @@
-import React from 'react'
+import React, {useState} from 'react'
+import ShowContactDetails from './ShowContactDetails';
 
-const Contacts = ({contactsPropsArray}) => {
+const Contacts = ({contactsPropsArray, deleteContact}) => {
+    
+
+
   return (
     <>
     <div className="container">
         <ul className="contact_list">
             {contactsPropsArray.map(contactObj =>{
-                return <li key={contactObj.id}>
-                    <h3>{contactObj.name}</h3>
-                    <p>{contactObj.city}, {contactObj.state}</p>
-                </li>
+            return   <ShowContactDetails contactObj={contactObj} onDelete={deleteContact} />
             })}
         </ul>
     </div>
