@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
+import EditContact from './EditContact'
 
-const ShowContactDetails = ({contactObj, onDelete}) => {
+const ShowContactDetails = ({contactObj, onDelete, updateContactProp}) => {
 
     const [showDetailedContact, setShowDetailedContact] = useState(false)
     const [isShown, setIsShown] = useState(false)
+    const [showEdit, setShowEdit] = useState(false)
 
 
     const handleDisplayContact = () => { 
@@ -13,10 +15,25 @@ const ShowContactDetails = ({contactObj, onDelete}) => {
             setShowDetailedContact(true)
         }
     }
+    const onMouseEnter = () => { 
+        handleDisplayContact()
+        setIsShown(true)
+     }
+
+     const onMouseLeave = () => {
+        handleDisplayContact()
+        setIsShown(false)
+     }
+
+    const showEditForm = () => { 
+        setShowEdit(true)
+     }
+
+  
 
 
 
-    return <div onClick={()=>handleDisplayContact()} onMouseEnter={()=> setIsShown(true)} onMouseLeave={()=>setIsShown(false)}>
+    return <div onMouseEnter={()=> onMouseEnter()} onMouseLeave={()=>onMouseLeave()}>
     {!showDetailedContact ? 
         <li key={contactObj.id}>
             <h3>{contactObj.name}</h3>
@@ -34,16 +51,14 @@ const ShowContactDetails = ({contactObj, onDelete}) => {
 
     {isShown ? <div className="buttonGroup">
             <button className="threeButtons">Favorite</button>
-            <button className="threeButtons">Edit</button>
+            <button className="threeButtons" onClick={()=> showEditForm()}>Edit</button>
             <button className="threeButtons" onClick={()=> onDelete(contactObj.id)}>Delete</button>
         </div>
         : <div className="buttonGroup"></div>}
-        
-       
-      
-        
-
+    {showEdit ? <EditContact existedContact={contactObj} updateContactProp={updateContactProp} /> : <div></div>}
+  
         </div>
+         
 }
 
 export default ShowContactDetails

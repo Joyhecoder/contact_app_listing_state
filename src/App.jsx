@@ -66,6 +66,16 @@ function App() {
     })
     setContacts(filteredContacts)
   }
+
+
+     const handleUpdateContact = (updatedContactObj) => {
+        console.log(updatedContactObj)
+        let filteredContacts = contacts.filter(contact =>{
+          return updatedContactObj.id !== contact.id
+        })
+        setContacts([updatedContactObj, ...filteredContacts])
+        
+     }
   
   return (
     <>
@@ -97,7 +107,7 @@ function App() {
 
 <br />
 <br />
-<Contacts contactsPropsArray={contacts} deleteContact={id=> handleRemoveContact(id)} />
+<Contacts contactsPropsArray={contacts} deleteContact={id=> handleRemoveContact(id)} updateContactProp={(updatedContactObj)=>handleUpdateContact(updatedContactObj)} />
     
      
      
