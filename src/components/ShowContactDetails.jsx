@@ -29,7 +29,9 @@ const ShowContactDetails = ({contactObj, onDelete, updateContactProp}) => {
         setShowEdit(true)
      }
 
-  
+     const hideEditForm = () => { 
+        setShowEdit(false)
+      }
 
 
 
@@ -55,7 +57,7 @@ const ShowContactDetails = ({contactObj, onDelete, updateContactProp}) => {
             <button className="threeButtons" onClick={()=> onDelete(contactObj.id)}>Delete</button>
         </div>
         : <div className="buttonGroup"></div>}
-    {showEdit ? <EditContact existedContact={contactObj} updateContactProp={updateContactProp} /> : <div></div>}
+    {showEdit ? <EditContact existedContact={contactObj} updateContactProp={updateContactProp} hideEditForm={()=>hideEditForm()} /> : <div></div>}
   
         </div>
          

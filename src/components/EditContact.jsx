@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 
-const EditContact = ({existedContact, updateContactProp}) => {
+const EditContact = ({existedContact, updateContactProp, hideEditForm}) => {
     console.log(existedContact)
     const [name, setName] = useState(existedContact.name)
     const [address, setAddress] = useState(existedContact.address)
@@ -31,6 +31,7 @@ const EditContact = ({existedContact, updateContactProp}) => {
         }
      
         updateContactProp(newContact)
+        hideEditForm()
      }
   return (
     <>
